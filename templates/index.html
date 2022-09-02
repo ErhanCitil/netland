@@ -1,0 +1,37 @@
+<head>
+  <title>Netland</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-900">
+  <div class="mt-4">
+    <h1 class="text-white text-3xl text-center">
+      Welkom op het Netland beheerders paneel
+    </h1>
+  </div>
+
+  <div class="flex justify-center mt-4">
+    <table>
+
+      <thead>
+        <tr>
+            <th> Title </th>
+            <th class=""> Rating </th>
+            <th class="pl-4"> Details </th>
+        </tr>
+      </thead>
+  
+
+    {% for serie in series %}
+      <tbody>
+
+        <tr>
+          <td class="text-white"> {{ serie.title }} </td>
+          <td class="text-white pl-2"> {{ serie.rating }} </td>
+          <td class="text-white pl-2"> <a href="{% url 'detail' serie.id %}">Bekijk Details</a> </td>
+        </tr>
+      </tbody>
+    {% endfor %}
+  </table>
+  </div>
+</body>
