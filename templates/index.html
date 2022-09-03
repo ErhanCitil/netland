@@ -1,37 +1,64 @@
-<head>
-  <title>Netland</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-</head>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://unpkg.com/tailwindcss@2.2.4/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <title>Netland!</title>
+  </head>
 
-<body class="bg-gray-900">
-  <div class="mt-4">
-    <h1 class="text-white text-3xl text-center">
-      Welkom op het Netland beheerders paneel
+  <body class="bg-gray-900 h-screen w-screen">
+    <h1 class="text-white flex justify-center text-3xl pt-7 font-bold">
+      Welkom op het netland beheerders paneel
     </h1>
-  </div>
 
-  <div class="flex justify-center mt-4">
-    <table>
+    <!-- 2 tables -->
+    <h1 class="font-bold text-white text-xl flex justify-center mt-10 h-5">
+      Series
+    </h1>
+    <div class="flex justify-center mt-3">
+      <!-- Series -->
+      <div class="flex justify-center" style="height: 350px">
+        <!-- Table Series -->
+        <div class="col-span-12 h-screen">
+          <div class="overflow-auto lg:overflow-visible">
+            <table
+              class="table text-gray-400 border-separate space-y-6 text-sm"
+            >
+              <thead class="bg-gray-800 text-gray-500">
+                <tr>
+                  <th class="p-3 w-48">Title</th>
+                  <th class="p-3 text-left w-20 pl-5">Rating</th>
+                  <th class="p-3 text-left">Details</th>
+                </tr>
+              </thead>
 
-      <thead>
-        <tr>
-            <th> Title </th>
-            <th class=""> Rating </th>
-            <th class="pl-4"> Details </th>
-        </tr>
-      </thead>
-  
-
-    {% for serie in series %}
-      <tbody>
-
-        <tr>
-          <td class="text-white"> {{ serie.title }} </td>
-          <td class="text-white pl-2"> {{ serie.rating }} </td>
-          <td class="text-white pl-2"> <a href="{% url 'detail' serie.id %}">Bekijk Details</a> </td>
-        </tr>
-      </tbody>
-    {% endfor %}
-  </table>
-  </div>
-</body>
+              {% for serie in series %}
+              <tbody>
+                <tr class="bg-gray-800">
+                  <td class="p-3">
+                    <div class="flex align-items-center">
+                      <div class="ml-3">
+                        <div class="font-bold">{{ serie.title }}</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="p-3 pl-8 font-bold">{{ serie.rating }}</td>
+                  <td class="text-white pl-2">
+                    <a href="{% url 'detail' serie.id %}">Bekijk Details</a>
+                  </td>
+                </tr>
+              </tbody>
+              {% endfor %}
+              
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
