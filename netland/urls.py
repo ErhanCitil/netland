@@ -22,4 +22,9 @@ urlpatterns = [
     path('', views.index),
     path('serie/<int:id>', views.detailserie, name='detailserie'),
     path('movie/<int:id>', views.detailmovie, name='detailmovie'),
+    path('updateserie/<int:id>', views.updateserie, name='updateserie'),
+    path('updateserie/updateseriedetails/<int:id>', views.updateseriedetails, name='updateseriedetails'),
+    path('deleteserie/<int:id>', views.deleteserie, name='deleteserie'),
+    path('deletemovie/<int:id>', views.deletemovie, name='deletemovie'),
+    path('updatemovie/<int:id>', views.updatemovie, name='updatemovie'),
 ]

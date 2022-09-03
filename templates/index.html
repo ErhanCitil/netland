@@ -34,6 +34,8 @@
                   <th class="p-3 w-48">Title</th>
                   <th class="p-3 text-left w-20 pl-5">Rating</th>
                   <th class="p-3 text-left">Details</th>
+                  <th class="p-3 text-left">Update</th>
+                  <th class="p-3 text-left">Delete</th>
                 </tr>
               </thead>
 
@@ -48,20 +50,27 @@
                     </div>
                   </td>
                   <td class="p-3 pl-8 font-bold">{{ serie.rating }}</td>
+                  <td class="text-white pl-2 pr-2">
+                    <a href="{% url 'detailserie' serie.id %}"
+                      >Bekijk Details</a
+                    >
+                  </td>
+
                   <td class="text-white pl-2">
-                    <a href="{% url 'detailserie' serie.id %}">Bekijk Details</a>
+                    <a href="{% url 'updateserie' serie.id %}">Update</a>
+                  </td>
+
+                  <td class="text-white pl-2">
+                    <a href="deleteserie/{{ serie.id }}">Delete</a>
                   </td>
                 </tr>
               </tbody>
               {% endfor %}
-
             </table>
           </div>
         </div>
       </div>
     </div>
-
-
 
     <h1 class="font-bold text-white text-xl flex justify-center mt-10 h-5">
       Movies
@@ -80,6 +89,8 @@
                   <th class="p-3 w-48">Title</th>
                   <th class="p-3 text-left w-20 pl-5">Duur</th>
                   <th class="p-3 text-left">Details</th>
+                  <th class="p-3 text-left">Update</th>
+                  <th class="p-3 text-left">Delete</th>
                 </tr>
               </thead>
 
@@ -93,14 +104,24 @@
                       </div>
                     </div>
                   </td>
-                  <td class="p-3 pl-8 font-bold">{{ movie.length_in_minutes }}</td>
-                  <td class="text-white pl-2">
-                    <a href="{% url 'detailmovie' movie.id %}">Bekijk Details</a>
+                  <td class="p-3 pl-8 font-bold">
+                    {{ movie.length_in_minutes }}
                   </td>
+                  <td class="text-white text-center pl-2 pr-2">
+                    <a href="{% url 'detailmovie' movie.id %}"
+                      >Bekijk Details</a>
+                  </td>
+
+                  <td class="text-white text-center">
+                    <a href="{% url 'updatemovie' movie.id %}">Update</a>
+                  </td>
+
+                   <td class="text-white pl-2">
+                    <a href="deletemovie/{{ movie.id }}">Delete</a>
+                  </td> 
                 </tr>
               </tbody>
               {% endfor %}
-              
             </table>
           </div>
         </div>
