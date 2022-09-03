@@ -20,5 +20,6 @@ from data import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index),
-    path('<int:id>', views.detail, name='detail'),
+    path('serie/<int:id>', views.detailserie, name='detailserie'),
+    path('movie/<int:id>', views.detailmovie, name='detailmovie'),
 ]

@@ -16,6 +16,10 @@ def index(request):
     }
     return render(request, 'index.html', context)
 
-def detail(request, id):
+def detailserie(request, id):
     obj = get_object_or_404(Series, pk=id)
-    return render(request, 'detail.html', {'object': obj}) 
+    return render(request, 'detailserie.html', {'object': obj}) 
+
+def detailmovie(request, id):
+    obj = get_object_or_404(Movies, pk=id)
+    return render(request, 'detailmovie.html', {'object': obj}) 

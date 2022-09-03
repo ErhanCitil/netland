@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://unpkg.com/tailwindcss@2.2.4/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <title>Netland! - Movies</title>
+  </head>
+
+  <body class="bg-gray-900 h-screen w-screen">
+    <div class="h-screen w-screen">
+      <h1 class="text-white flex justify-center text-3xl pt-7 font-bold">
+        {{object.title}}
+      </h1>
+
+      <!-- Information Table -->
+      <div class="flex justify-center mt-5">
+        <div class="flex justify-center" style="height: 275px">
+          <!-- Table Movies -->
+          <div class="col-span-12 h-screen">
+            <div class="overflow-auto lg:overflow-visible">
+              <table
+                class="table text-gray-400 border-separate space-y-6 text-sm"
+              >
+                <thead class="bg-gray-800 text-gray-500">
+                  <tr>
+                    <th class="p-3 w-48">Information</th>
+                    <th class="p-3 text-left w-20 pl-5">Information</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="bg-gray-800">
+                    <td class="p-3">
+                      <div class="flex align-items-center">
+                        <div class="ml-3">
+                          <div class="font-bold">Datum van uitkomst</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="p-3 pl-8 font-bold">
+                      {{object.released_at}}
+                    </td>
+                  </tr>
+                  <tr class="bg-gray-800">
+                    <td class="p-3">
+                      <div class="flex align-items-center">
+                        <div class="ml-3">
+                          <div class="font-bold">Land van uitkomst</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="p-3 pl-8 font-bold">{{object.country_of_origin}}</td>
+                  </tr>
+                  <tr class="bg-gray-800">
+                    <td class="p-3">
+                      <div class="flex align-items-center">
+                        <div class="ml-3">
+                          <div class="font-bold">Duur</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="p-3 pl-8 font-bold">{{object.length_in_minutes}} minuten</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="text-white flex justify-center text-2xl mt-10 font-bold">
+        Beschrijving:
+      </h3>
+      <p id="circle" class="text-white flex justify-center mt-9">
+        {{object.summary}}
+      </p>
+    </div>
+    <a href="/" class="mt-2 text-white" id="previous">&laquo; Terug</a>
+  </body>
+</html>

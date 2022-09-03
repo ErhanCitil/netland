@@ -49,7 +49,53 @@
                   </td>
                   <td class="p-3 pl-8 font-bold">{{ serie.rating }}</td>
                   <td class="text-white pl-2">
-                    <a href="{% url 'detail' serie.id %}">Bekijk Details</a>
+                    <a href="{% url 'detailserie' serie.id %}">Bekijk Details</a>
+                  </td>
+                </tr>
+              </tbody>
+              {% endfor %}
+
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <h1 class="font-bold text-white text-xl flex justify-center mt-10 h-5">
+      Movies
+    </h1>
+    <div class="flex justify-center mt-3">
+      <!-- Movies -->
+      <div class="flex justify-center" style="height: 350px">
+        <!-- Table Movies-->
+        <div class="col-span-12 h-screen">
+          <div class="overflow-auto lg:overflow-visible">
+            <table
+              class="table text-gray-400 border-separate space-y-6 text-sm"
+            >
+              <thead class="bg-gray-800 text-gray-500">
+                <tr>
+                  <th class="p-3 w-48">Title</th>
+                  <th class="p-3 text-left w-20 pl-5">Duur</th>
+                  <th class="p-3 text-left">Details</th>
+                </tr>
+              </thead>
+
+              {% for movie in movies %}
+              <tbody>
+                <tr class="bg-gray-800">
+                  <td class="p-3">
+                    <div class="flex align-items-center">
+                      <div class="ml-3">
+                        <div class="font-bold">{{ movie.title }}</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="p-3 pl-8 font-bold">{{ movie.length_in_minutes }}</td>
+                  <td class="text-white pl-2">
+                    <a href="{% url 'detailmovie' movie.id %}">Bekijk Details</a>
                   </td>
                 </tr>
               </tbody>
