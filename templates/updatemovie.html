@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>Netland - Movies Update</title>
+</head>
+
+<body class="bg-gray-900 text-white h-screen w-screen">
+    <h1 class="flex justify-center text-3xl font-bold pt-5">{{object.title}}</h1>
+    <div class="flex flex-col">
+        <form action="updatemoviedetails/{{object.id}}" method="post">
+            {% csrf_token %}
+            <label for="Titel" class="pr-4 pl-5 font-bold text-xl">Titel</label>
+            <input class="bg-blue-600 ml-36" type="text" name="title" value="{{object.title}}">
+
+            <div class="pt-2">
+                <label for="Duur" class="pr-4 pl-4 font-bold text-xl">Duur</label>
+                <input class="bg-blue-600 ml-36" type="text" name="duur" value="{{object.length_in_minutes}}">
+            </div>
+
+            <div class="pt-2">
+                <label for="Land" class="pr-8.5 pl-4 font-bold text-xl">Land van uitkomst</label>
+                <input class="bg-blue-600 ml-8" type="text" name="country" value="{{object.country_of_origin}}">
+            </div>
+  
+            <div class="pt-5">
+                <label for="Omschrijving" class="pr-8.5 pl-4 font-bold text-xl">Omschrijving</label>
+                <textarea name="summary" class="bg-blue-600 ml-20" value="" cols="20"
+                    rows="5">{{object.summary}}</textarea>
+            </div>
+
+            <div class="pt-2">
+                <label for="Land" class="pr-8.5 pl-4 font-bold text-xl">YouTube Trailer ID</label>
+                <input class="bg-blue-600 ml-8" type="text" name="trailerid" value="{{object.youtube_trailer_id}}">
+            </div>
+
+            <input type="submit" value="Wijzigen">
+
+        </form>
+
+        <a href="#" class="mt-2 text-white bg-blue-600 w-20 text-center ml-4 mt-10" id="previous">&laquo; Terug</a>
+    </div>
+</body>
+
+</html>
