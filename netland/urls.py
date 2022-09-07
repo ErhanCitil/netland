@@ -19,7 +19,7 @@ from data import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('index', views.index),
+    path('', views.index),
     path('serie/<int:id>', views.detailserie, name='detailserie'),
     path('movie/<int:id>', views.detailmovie, name='detailmovie'),
     path('updateserie/<int:id>', views.updateserie, name='updateserie'),
