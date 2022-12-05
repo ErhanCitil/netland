@@ -5,6 +5,6 @@ from .views import *
 urlpatterns = [
         path('deletemovie/<int:id>', DeleteMovie.as_view(), name='deletemovie'),
         path('updatemovie/<int:id>', UpdateMovie.as_view(), name='updatemovie'),
-        path('updatemovie/updatemoviedetails/<int:id>', views.updatemoviedetails, name='updatemoviedetails'),
+        path('updatemovie/updatemoviedetails/<int:id>', UpdateMovieDetails.as_view(), name='updatemoviedetails'),
         path('movie/<int:id>', DetailMovie.as_view(), name='detailmovie'),
 ]

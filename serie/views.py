@@ -1,12 +1,13 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import get_object_or_404
 from .models import *
-from django.shortcuts import render
 from django.http import HttpResponseRedirect
 
 from django.views.generic.list import ListView
+
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 
+from movie.models import Movies
 # Create your views here.
 class Index(ListView):
     model = Series

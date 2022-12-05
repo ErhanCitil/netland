@@ -17,17 +17,6 @@ class DetailMovie(ListView):
         context['object'] = Movies.objects.get(id=self.kwargs['id'])
         return context
 
-def updatemoviedetails(request, id):
-    obj = get_object_or_404(Movies, pk=id)
-    obj.title = request.POST['title']
-    obj.length_in_minutes = request.POST['duur']
-    obj.released_at = request.POST['released_at']
-    obj.country_of_origin = request.POST['country']
-    obj.summary = request.POST['summary']
-    obj.youtube_trailer_id = request.POST['youtube_trailer_id']
-    obj.save()
-    return HttpResponseRedirect("/")
-
 class UpdateMovie(ListView):
     model = Movies
     template_name = 'updatemovie.html'
@@ -36,6 +25,23 @@ class UpdateMovie(ListView):
         context = super().get_context_data(**kwargs)
         context['object'] = Movies.objects.get(id=self.kwargs['id'])
         return context
+
+class UpdateMovieDetails(UpdateView):
+    model = Movies
+    fields = ['title', 'duur', 'released_at', 'country_of_origin', 'summary', 'youtube_trailer_id']
+    template_name = 'updatemovie.html'
+    success_url = reverse_lazy('index')
+
+# def updatemoviedetails(request, id):
+#     obj = get_object_or_404(Movies, pk=id)
+#     obj.title = request.POST['title']
+#     obj.length_in_minutes = request.POST['duur']
+#     obj.released_at = request.POST['released_at']
+#     obj.country_of_origin = request.POST['country_of_origin']
+#     obj.summary = request.POST['summary']
+#     obj.youtube_trailer_id = request.POST['youtube_trailer_id']
+#     obj.save()
+#     return HttpResponseRedirect("/")
 
 class DeleteMovie(DeleteView):
     model = Movies
