@@ -4,11 +4,10 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect
 
 from django.views.generic.list import ListView
-# Create your views here.
-def detailserie(request, id):
-    obj = get_object_or_404(Series, pk=id)
-    return render(request, 'detailserie.html', {'object': obj})
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.urls import reverse_lazy
 
+# Create your views here.
 class Index(ListView):
     model = Series
     template_name = 'index.html'
@@ -19,9 +18,23 @@ class Index(ListView):
         context['movies'] = Movies.objects.all()
         return context
 
-def updateserie(request, id):
-    obj = get_object_or_404(Series, pk=id)
-    return render(request, 'updateserie.html', {'object': obj})
+class DetailSeries(ListView):
+    model = Series
+    template_name = 'detailserie.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['object'] = Series.objects.get(id=self.kwargs['id'])
+        return context
+
+class UpdateSerie(ListView):
+    model = Series
+    template_name = 'updateserie.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['object'] = Series.objects.get(id=self.kwargs['id'])
+        return context
 
 def updateseriedetails(request, id):
     obj = get_object_or_404(Series, pk=id)
@@ -31,11 +44,10 @@ def updateseriedetails(request, id):
     obj.has_won_awards = request.POST['has_won_awards']
     obj.seasons = request.POST['seasons']
     obj.country = request.POST['country']
-    obj.spoken_in_language = request.POST['spoken_in_language']
     obj.save()
     return HttpResponseRedirect("/")
 
-def deleteserie(request, id):
-    seriedelete = Series.objects.get(id=id)
-    seriedelete.delete()
-    return HttpResponseRedirect("/")
+class DeleteSerie(DeleteView):
+    model = Series
+    template_name = 'deleteserie.html'
+    success_url = reverse_lazy('index')

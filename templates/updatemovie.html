@@ -39,15 +39,28 @@
 
         <div class="pt-2">
           <label for="Land" class="pr-8.5 pl-4 font-bold text-xl"
-            >Land van uitkomst</label
+            >Datum van uitkomst</label
           >
           <input
             class="bg-blue-600 ml-8"
             type="text"
-            name="country"
-            value="{{object.country_of_origin}}"
+            name="released_at"
+            value="{{object.released_at}}"
           />
         </div>
+
+        <div class="pt-5">
+          <label for="Omschrijving" class="pr-8.5 pl-4 font-bold text-xl"
+            >Land van uitkomst</label
+          >
+          <input
+          class="bg-blue-600 ml-8"
+          type="text"
+          name="country_of_origin"
+          value="{{object.country_of_origin}}"
+        />
+        </div>
+
 
         <div class="pt-5">
           <label for="Omschrijving" class="pr-8.5 pl-4 font-bold text-xl"
@@ -64,6 +77,7 @@
           >
         </div>
 
+
         <div class="pt-2">
           <label for="Land" class="pr-8.5 pl-4 font-bold text-xl"
             >YouTube Trailer ID</label
@@ -71,7 +85,7 @@
           <input
             class="bg-blue-600 ml-8"
             type="text"
-            name="trailerid"
+            name="youtube_trailer_id"
             value="{{object.youtube_trailer_id}}"
           />
         </div>
