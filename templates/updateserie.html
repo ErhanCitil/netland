@@ -17,67 +17,10 @@
       {{object.title}}
     </h1>
     <div class="flex flex-col">
-      <form action="updateseriedetails/{{object.id}}" class="" method="post">
+      <form style="color: blue;" method="post">
         {% csrf_token %}
-        <label for="title" class="pr-4 pl-5 font-bold text-xl">Titel</label>
-        <input
-          class="bg-blue-600"
-          type="text"
-          name="title"
-          value="{{object.title}}"
-        />
-
-        <div class="pt-2">
-          <label for="rating" class="pr-4 pl-4 font-bold text-xl">Awards</label>
-          <input
-            class="bg-blue-600 "
-            type="text"
-            name="has_won_awards"
-            value="{{object.has_won_awards}}"
-          />
-        </div>
-
-        <div class="pt-2">
-          <label for="seasons" class="pr-8.5 pl-4 font-bold text-xl"
-            >Seasons</label
-          >
-          <input
-            class="bg-blue-600 ml-8"
-            type="text"
-            name="seasons"
-            value="{{object.seasons}}"
-          />
-        </div>
-
-        <div class="pt-5">
-          <label for="country" class="pr-8.5 pl-4 font-bold text-xl"
-            >Country</label
-          >
-          <input
-          class="bg-blue-600 ml-8"
-          type="text"
-          name="country"
-          value="{{object.country}}"
-        />
-        </div>
-
-        <div class="pt-2">
-          <label for="rating" class="pr-8.5 pl-4 font-bold text-xl"
-            >Rating</label
-          >
-          <input
-            class="bg-blue-600 ml-8"
-            type="text"
-            name="rating"
-            value="{{object.rating}}"
-          />
-        </div>
-        
-        <div class="pt-5">
-            <label for="Omschrijving" class="pr-8.5 pl-4 font-bold text-xl">Omschrijving</label>
-            <textarea name="summary" class="bg-blue-600 ml-20" value="" cols="20"
-                rows="5">{{object.summary}}</textarea>
-        </div>
+       
+        {{form.as_p}}
 
         <input type="submit" class="mt-2 text-white bg-blue-600 w-20 text-center ml-4 mt-10" value="Wijzigen" />
       </form>
