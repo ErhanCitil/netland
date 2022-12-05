@@ -61,9 +61,12 @@
                     <a href="{% url 'updateserie' serie.id %}">Update</a>
                   </td>
 
+                  <form action="{% url "deleteserie" serie.id %}" method="post" >
+                   {% csrf_token %}
                   <td class="text-white pl-2">
-                    <a href="deleteserie/{{ serie.id }}">Delete</a>
+                    <button>Delete</button>
                   </td>
+                </form>
                 </tr>
               </tbody>
               {% endfor %}
@@ -117,9 +120,13 @@
                     <a href="{% url 'updatemovie' movie.id %}">Update</a>
                   </td>
 
+                  
+                  <form action="{% url "deletemovie" movie.id %}" method="post" >
+                    {% csrf_token %}
                    <td class="text-white pl-2">
-                    <a href="deletemovie/{{ movie.id }}">Delete</a>
-                  </td> 
+                     <button>Delete</button>
+                   </td>
+                 </form>
                 </tr>
               </tbody>
               {% endfor %}

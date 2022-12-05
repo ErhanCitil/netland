@@ -27,5 +27,4 @@ class UpdateSerie(generic.UpdateView):
 
 class DeleteSerie(generic.DeleteView):
     model = Series
-    template_name = 'deleteserie.html'
     success_url = reverse_lazy('index')
