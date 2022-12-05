@@ -1,21 +1,23 @@
-from django.shortcuts import render
 from django.shortcuts import render, get_object_or_404
 from .models import *
 from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponseRedirect
+
+from django.views.generic.list import ListView
 # Create your views here.
 def detailserie(request, id):
     obj = get_object_or_404(Series, pk=id)
     return render(request, 'detailserie.html', {'object': obj})
 
-def index(request):
-    movies = Movies.objects.all()
-    series = Series.objects.all()
-    context = {
-        'movies': movies,
-        'series': series
-    }
-    return render(request, 'index.html', context)
+class Index(ListView):
+    model = Series
+    template_name = 'index.html'
+    context_object_name = 'series'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['movies'] = Movies.objects.all()
+        return context
 
 def updateserie(request, id):
     obj = get_object_or_404(Series, pk=id)

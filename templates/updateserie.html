@@ -1,63 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>Netland - Movies Update</title>
+  </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <title>Netland - Series Update</title>
-</head>
-
-<body class="bg-gray-900 text-white h-screen w-screen">
-    <h1 class="flex justify-center text-3xl font-bold pt-5">{{object.title}}</h1>
+  <body class="bg-gray-900 text-white h-screen w-screen">
+    <h1 class="flex justify-center text-3xl font-bold pt-5">
+      {{object.title}}
+    </h1>
     <div class="flex flex-col">
-        <form action="updateseriedetails/{{object.id}}" method="post">
-            {% csrf_token %}
-            <label for="Titel" class="pr-4 pl-5 font-bold text-xl">Titel</label>
-            <input class="bg-blue-600 ml-36" type="text" name="title" value="{{object.title}}">
+      <form action="updateseriedetails/{{object.id}}" class="" method="post">
+        {% csrf_token %}
+        <label for="title" class="pr-4 pl-5 font-bold text-xl">Titel</label>
+        <input
+          class="bg-blue-600"
+          type="text"
+          name="title"
+          value="{{object.title}}"
+        />
 
-            <div class="pt-2">
-                <label for="Duur" class="pr-4 pl-4 font-bold text-xl">Awards</label>
-                <input class="bg-blue-600 ml-36" type="text" name="has_won_awards" value="{{object.has_won_awards}}">
-            </div>
+        <div class="pt-2">
+          <label for="rating" class="pr-4 pl-4 font-bold text-xl">Awards</label>
+          <input
+            class="bg-blue-600 "
+            type="text"
+            name="has_won_awards"
+            value="{{object.has_won_awards}}"
+          />
+        </div>
 
-            <div class="pt-2">
-                <label for="Datum" class="pr-4 pl-4 font-bold text-xl">Seasons</label>
-                <input class="bg-blue-600 ml-0.25" type="text" name="seasons" value="{{object.seasons}}">
-            </div>
+        <div class="pt-2">
+          <label for="seasons" class="pr-8.5 pl-4 font-bold text-xl"
+            >Seasons</label
+          >
+          <input
+            class="bg-blue-600 ml-8"
+            type="text"
+            name="seasons"
+            value="{{object.seasons}}"
+          />
+        </div>
 
-            <div class="pt-2">
-                <label for="Land" class="pr-8.5 pl-4 font-bold text-xl">Country</label>
-                <input class="bg-blue-600 ml-8" type="text" name="country" value="{{object.country}}">
-            </div>
+        <div class="pt-5">
+          <label for="country" class="pr-8.5 pl-4 font-bold text-xl"
+            >Country</label
+          >
+          <input
+          class="bg-blue-600 ml-8"
+          type="text"
+          name="country"
+          value="{{object.country}}"
+        />
+        </div>
 
-            <div class="pt-2">
-                <label for="Land" class="pr-8.5 pl-4 font-bold text-xl">Language</label>
-                <input class="bg-blue-600 ml-8" type="text" name="spoken_in_language" value="{{object.spoken_in_language}}">
-            </div>
+        <div class="pt-2">
+          <label for="rating" class="pr-8.5 pl-4 font-bold text-xl"
+            >Rating</label
+          >
+          <input
+            class="bg-blue-600 ml-8"
+            type="text"
+            name="rating"
+            value="{{object.rating}}"
+          />
+        </div>
+        
+        <div class="pt-5">
+            <label for="Omschrijving" class="pr-8.5 pl-4 font-bold text-xl">Omschrijving</label>
+            <textarea name="summary" class="bg-blue-600 ml-20" value="" cols="20"
+                rows="5">{{object.summary}}</textarea>
+        </div>
 
+        <input type="submit" class="mt-2 text-white bg-blue-600 w-20 text-center ml-4 mt-10" value="Wijzigen" />
+      </form>
 
-            <div class="pt-2">
-                <label for="Land" class="pr-8.5 pl-4 font-bold text-xl">Rating</label>
-                <input class="bg-blue-600 ml-8" type="text" name="rating" value="{{object.rating}}">
-            </div>
-
-
-  
-            <div class="pt-5">
-                <label for="Omschrijving" class="pr-8.5 pl-4 font-bold text-xl">Omschrijving</label>
-                <textarea name="summary" class="bg-blue-600 ml-20" value="" cols="20"
-                    rows="5">{{object.summary}}</textarea>
-            </div>
- 
-            <input type="submit" class="mt-2 text-white bg-blue-600 w-20 text-center ml-4 mt-10" value="Wijzigen">
-
-        </form>
-
-        <a href="#" class="mt-2 text-white bg-blue-600 w-20 text-center ml-4 mt-10" id="previous">&laquo; Terug</a>
+      <a
+        href="/"
+        class="mt-2 text-white bg-blue-600 w-20 text-center ml-4 mt-10"
+        id="previous"
+        >&laquo; Terug</a
+      >
     </div>
-</body>
-
+  </body>
 </html>
