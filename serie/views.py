@@ -28,3 +28,9 @@ class UpdateSerie(generic.UpdateView):
 class DeleteSerie(generic.DeleteView):
     model = Series
     success_url = reverse_lazy('index')
+
+class CreateSerie(generic.CreateView):
+    model = Movies
+    template_name = 'createmovie.html'
+    form_class = SerieForm
+    success_url = reverse_lazy('index')

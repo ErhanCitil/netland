@@ -18,3 +18,10 @@ class DeleteMovie(generic.DeleteView):
     model = Movies
     template_name = 'deletemovie.html'
     success_url = reverse_lazy('index')
+
+class CreateMovie(generic.CreateView):
+    model = Movies
+    template_name = 'createmovie.html'
+    form_class = MovieForm
+    success_url = reverse_lazy('index')
+    
