@@ -6,7 +6,7 @@ class SerieForm(forms.ModelForm):
         model = Series
         fields = ['title', 'rating', 'has_won_awards', 'country', 'summary', 'seasons', 'spoken_in_language']
         wdigets = {
-            'title': forms.TextInput(attrs={'style': 'color: blue;','class': 'form-control'}),
+            'title': forms.TextInput(attrs={'class': 'form-control'}),
             'rating': forms.NumberInput(attrs={'class': 'form-control'}),
             'has_won_awards': forms.NumberInput(attrs={'class': 'form-control'}),
             'country': forms.TextInput(attrs={'class': 'form-control'}),
