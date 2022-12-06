@@ -21,7 +21,7 @@ class SerieTestCase(TestCase):
         self.assertEqual(serie.summary, 'A group of survivors travel through a post-apocalyptic world, holding on to the hope of humanity by banding together to fight against the zombies that threaten their lives.')
     
     def test_has_won_awards(self):
-        serie = Series.objects.get(has_won_awards='1')
+      for serie in Series.objects.all():
         self.assertEqual(serie.has_won_awards, '1')
     
     def test_seasons(self):
@@ -29,9 +29,9 @@ class SerieTestCase(TestCase):
         self.assertEqual(serie.seasons, '10')
     
     def test_country(self):
-        serie = Series.objects.get(country='US')
-        self.assertEqual(serie.country, 'US')
+        for serie in Series.objects.all():
+            self.assertEqual(serie.country, 'US')
     
     def test_spoken_in_language(self):
-        serie = Series.objects.get(spoken_in_language='EN')
-        self.assertEqual(serie.spoken_in_language, 'EN')
+        for serie in Series.objects.all():
+            self.assertEqual(serie.spoken_in_language, 'EN')

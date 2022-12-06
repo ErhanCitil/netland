@@ -10,5 +10,4 @@ class Movies(models.Model):
     youtube_trailer_id = models.CharField(max_length=20, blank=True, null=True)
 
     class Meta:
-        managed = False
         db_table = 'movies'
