@@ -59,5 +59,5 @@ class SerieViewTestCase(TestCase):
         self.assertEqual(response.status_code, 200)
     
     def test_create(self):
-        response = self.client.get('/createmovie/')
+        response = self.client.get('/createserie/')
         self.assertEqual(response.status_code, 200)
