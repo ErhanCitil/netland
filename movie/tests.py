@@ -1,6 +1,7 @@
 from django.test import TestCase
 from .models import *
 from .views import *
+from django.urls import reverse
 # Create your tests here.
 class MovieTest(TestCase):
     def test_movie(self):
@@ -22,14 +23,56 @@ class MovieTest(TestCase):
         self.assertEqual(movie.youtube_trailer_id, "123456789")
 
 class MovieViewsTest(TestCase):
-    def test_detail(self):
-        response = self.client.get('/movie/1/')
+    def setUp(self):
+        self.movie1 = Movies.objects.create(title="Test Movie", length_in_minutes=100, released_at="2020-01-01", country_of_origin="NL", summary="Test summary", youtube_trailer_id="123456789")
+        self.movie2 = Movies.objects.create(title="Test Movie2", length_in_minutes=100, released_at="2020-01-01", country_of_origin="NL", summary="Test summary", youtube_trailer_id="123456789")
+        self.movie3 = Movies.objects.create(title="Test Movie3", length_in_minutes=100, released_at="2020-01-01", country_of_origin="NL", summary="Test summary", youtube_trailer_id="123456789")
+        self.movie4 = Movies.objects.create(title="Test Movie4", length_in_minutes=100, released_at="2020-01-01", country_of_origin="NL", summary="Test summary", youtube_trailer_id="123456789")
+
+    def test_index(self):
+        url = reverse('index')
+        response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
     
-    def test_update(self):
-        response = self.client.patch('/updatemovie/1')
+    def test_detailmovie(self):
+        url = reverse('detailmovie', kwargs={'pk': self.movie1.pk})
+        response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
 
-    def test_create(self):
-        response = self.client.get('/createmovie/')
+    def test_updatemovie(self):
+        url = reverse('updatemovie', kwargs={'pk': self.movie1.pk})
+        response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
+
+class MovieViewsTestContent(TestCase):
+    def setUp(self):
+        self.movie1 = Movies.objects.create(title="Test Movie", length_in_minutes=100, released_at="2020-01-01", country_of_origin="NL", summary="Test summary", youtube_trailer_id="123456789")
+        self.movie2 = Movies.objects.create(title="Test Movie2", length_in_minutes=100, released_at="2020-01-01", country_of_origin="NL", summary="Test summary", youtube_trailer_id="123456789")
+        self.movie3 = Movies.objects.create(title="Test Movie3", length_in_minutes=100, released_at="2020-01-01", country_of_origin="NL", summary="Test summary", youtube_trailer_id="123456789")
+        self.movie4 = Movies.objects.create(title="Test Movie4", length_in_minutes=100, released_at="2020-01-01", country_of_origin="NL", summary="Test summary", youtube_trailer_id="123456789")
+    
+    def test_index(self):
+        url = reverse('index')
+        response = self.client.get(url)
+        self.assertContains(response, self.movie1.title)
+        self.assertContains(response, self.movie2.title)
+        self.assertContains(response, self.movie3.title)
+        self.assertContains(response, self.movie4.title)
+
+    def test_detailmovie(self):
+        url = reverse('detailmovie', kwargs={'pk': self.movie1.pk})
+        response = self.client.get(url)
+        self.assertContains(response, self.movie1.title)
+        self.assertContains(response, self.movie1.length_in_minutes)
+        self.assertContains(response, self.movie1.country_of_origin)
+        self.assertContains(response, self.movie1.summary)
+
+    def test_updatemovie(self):
+        url = reverse('updatemovie', kwargs={'pk': self.movie1.pk})
+        response = self.client.get(url)
+        self.assertContains(response, self.movie1.title)
+        self.assertContains(response, self.movie1.length_in_minutes)
+        self.assertContains(response, self.movie1.released_at)
+        self.assertContains(response, self.movie1.country_of_origin)
+        self.assertContains(response, self.movie1.summary)
+        self.assertContains(response, self.movie1.youtube_trailer_id)
