@@ -2,6 +2,7 @@ from django.test import TestCase
 from .models import *
 from .views import *
 from django.urls import reverse
+from django.contrib.auth.models import User
 # Create your tests here.
 class MovieTest(TestCase):
     def test_movie(self):
@@ -28,6 +29,8 @@ class MovieViewsTest(TestCase):
         self.movie2 = Movies.objects.create(title="Test Movie2", length_in_minutes=100, released_at="2020-01-01", country_of_origin="NL", summary="Test summary", youtube_trailer_id="123456789")
         self.movie3 = Movies.objects.create(title="Test Movie3", length_in_minutes=100, released_at="2020-01-01", country_of_origin="NL", summary="Test summary", youtube_trailer_id="123456789")
         self.movie4 = Movies.objects.create(title="Test Movie4", length_in_minutes=100, released_at="2020-01-01", country_of_origin="NL", summary="Test summary", youtube_trailer_id="123456789")
+        self.user = User.objects.create_user(username='root', password='test')
+        self.client.login(username='root', password='test')
 
     def test_index(self):
         url = reverse('index')
@@ -50,7 +53,9 @@ class MovieViewsTestContent(TestCase):
         self.movie2 = Movies.objects.create(title="Test Movie2", length_in_minutes=100, released_at="2020-01-01", country_of_origin="NL", summary="Test summary", youtube_trailer_id="123456789")
         self.movie3 = Movies.objects.create(title="Test Movie3", length_in_minutes=100, released_at="2020-01-01", country_of_origin="NL", summary="Test summary", youtube_trailer_id="123456789")
         self.movie4 = Movies.objects.create(title="Test Movie4", length_in_minutes=100, released_at="2020-01-01", country_of_origin="NL", summary="Test summary", youtube_trailer_id="123456789")
-    
+        self.user = User.objects.create_user(username='root', password='test')
+        self.client.login(username='root', password='test')
+        
     def test_index(self):
         url = reverse('index')
         response = self.client.get(url)
