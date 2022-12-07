@@ -1,6 +1,7 @@
 from django.test import TestCase
 from .models import *
 from .views import *
+from django.urls import reverse
 # Create your tests here.
 
 class SerieTestCase(TestCase):
@@ -39,20 +40,22 @@ class SerieTestCase(TestCase):
 
 class SerieViewTestCase(TestCase):
     def setUp(self):
-        Series.objects.create(title='The Walking Dead', rating=9.0, summary='A group of survivors travel through a post-apocalyptic world, holding on to the hope of humanity by banding together to fight against the zombies that threaten their lives.', has_won_awards=1, seasons=10, country='US', spoken_in_language='EN')
-        Series.objects.create(title='Breaking Bad', rating=9.5, summary='A high school chemistry teacher diagnosed with inoperable lung cancer turns to manufacturing and selling methamphetamine in order to secure his familys future.', has_won_awards='1', seasons='5', country='US', spoken_in_language='EN')
-        Series.objects.create(title='Game of Thrones', rating=9.3, summary='Nine noble families fight for control over the mythical lands of Westeros, while a forgotten', has_won_awards='1', seasons='8', country='US', spoken_in_language='EN')
+        self.series = Series.objects.create(title='The Walking Dead', rating=9.0, summary='A group of survivors travel through a post-apocalyptic world, holding on to the hope of humanity by banding together to fight against the zombies that threaten their lives.', has_won_awards=1, seasons=10, country='US', spoken_in_language='EN')
+        self.series = Series.objects.create(title='Breaking Bad', rating=9.5, summary='A high school chemistry teacher diagnosed with inoperable lung cancer turns to manufacturing and selling methamphetamine in order to secure his familys future.', has_won_awards='1', seasons='5', country='US', spoken_in_language='EN')
+        self.series = Series.objects.create(title='Game of Thrones', rating=9.3, summary='Nine noble families fight for control over the mythical lands of Westeros, while a forgotten', has_won_awards='1', seasons='8', country='US', spoken_in_language='EN')
     
     def test_index(self):
         response = self.client.get('/')
         self.assertEqual(response.status_code, 200)
-    
+
     def test_detail(self):
-        response = self.client.get('/serie/1/')
+        url = reverse('detailserie', kwargs={'pk': self.series.pk})
+        response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
     
     def test_update(self):
-        response = self.client.get('/updateserie/1/')
+        url = reverse('updateserie', kwargs={'pk': self.series.pk})
+        response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
     
     def test_create(self):
