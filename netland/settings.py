@@ -28,6 +28,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1']
 
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # Application definition
 
@@ -38,9 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'movie.apps.MovieConfig',
-    'serie.apps.SerieConfig',
-    'login.apps.LoginConfig',
+    'movie',
+    'serie',
+    'login',
 ]
 
 MIDDLEWARE = [
