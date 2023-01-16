@@ -1,0 +1,36 @@
+# Developers
+.hg
+.git
+.svn
+.idea/*
+.sass-cache/*
+*.db
+*.pyc
+*~
+
+# Javascript libraries
+src/bower_modules/*
+
+# Environment
+settings_local.py
+/env/*
+/staticfiles/*
+/static/
+/media/
+/deployment/vars/staging-environment.json
+/deployment/vars/production-environment.json
+/environment.json
+
+# Logs
+/log/
+
+/static/
+
+# Code coverage
+/htmlcov/*
+.coveragerc
+.coverage
+
+Pipfile
+Pipfile.lock
+.hypothesis
