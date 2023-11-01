@@ -2,35 +2,39 @@
 .hg
 .git
 .svn
-.idea/*
-.sass-cache/*
+.idea/
+.vscode/
+.sass-cache/
 *.db
 *.pyc
+__pycache__
 *~
+*.mo
 
 # Javascript libraries
-src/bower_modules/*
+/node_modules/
 
-# Environment
-settings_local.py
-/env/*
-/staticfiles/*
-/static/
-/media/
-/deployment/vars/staging-environment.json
-/deployment/vars/production-environment.json
-/environment.json
+# Generated files
+/docs/_build
 
-# Logs
-/log/
-
-/static/
-
-# Code coverage
-/htmlcov/*
-.coveragerc
+# Coverage reports
+/reports/
+/htmlcov/
 .coverage
 
-Pipfile
-Pipfile.lock
-.hypothesis
+# Environment
+#/deployment/app.*.yml
+#/deployment/hosts.*
+local.py
+/env/
+/venv/
+/media/
+/static/
+/mail/
+/log/*.log*
+/log/nginx/*.log*
+/.env
+
+# Static files
+src/netland/static/bundles/
+src/netland/fonts/
