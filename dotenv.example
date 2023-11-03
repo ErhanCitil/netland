@@ -1,0 +1,10 @@
+SECRET_KEY="django-insecure-a51_t&!%&+7a8km-21((u4hybyv6t_s5=lo=#u&3d-luc0z^)y"
+DB_NAME="netland"
+DB_USER="netland"
+#
+# For peer authentication via unix domain socket
+# these should be kept empty.
+#
+DB_PASSWORD=""
+DB_HOST=""
+DB_PORT=""
