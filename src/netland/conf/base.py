@@ -116,6 +116,7 @@ INSTALLED_APPS = [
     "netland.utils",
     "netland.movie",
     "netland.serie",
+    "netland.login",
 ]
 
 MIDDLEWARE = [
