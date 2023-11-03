@@ -38,9 +38,9 @@ urlpatterns = [
         name="password_reset_complete",
     ),
     # Simply show the master template.
-    path('', include('netland.movie.urls')),
-    path('', include('netland.serie.urls')),
-    path('', include('netland.login.urls')),
+    path("", include("netland.movie.urls")),
+    path("", include("netland.serie.urls")),
+    path("", include("netland.login.urls")),
 ]
 
 # NOTE: The staticfiles_urlpatterns also discovers static files (ie. no need to run collectstatic). Both the static

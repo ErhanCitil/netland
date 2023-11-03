@@ -2,6 +2,7 @@ from django.db import models
 
 # Create your models here.
 
+
 class Series(models.Model):
     title = models.CharField(max_length=100)
     rating = models.DecimalField(max_digits=2, decimal_places=1, blank=True, null=True)
@@ -12,4 +13,4 @@ class Series(models.Model):
     spoken_in_language = models.CharField(max_length=2)
 
     class Meta:
-        db_table = 'series'
+        db_table = "series"

@@ -1,5 +1,6 @@
 from django.db import models
 
+
 # Create your models here.
 class Movies(models.Model):
     title = models.CharField(max_length=100)
@@ -10,4 +11,4 @@ class Movies(models.Model):
     youtube_trailer_id = models.CharField(max_length=20, blank=True, null=True)
 
     class Meta:
-        db_table = 'movies'
+        db_table = "movies"

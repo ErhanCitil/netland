@@ -1,13 +1,17 @@
-from django.core.management.base import BaseCommand, CommandError
-from serie.models import Series
 from django.core.mail import send_mail
+from django.core.management.base import BaseCommand, CommandError
 from django.utils.html import strip_tags
 
+from serie.models import Series
+
+
 class Command(BaseCommand):
-    help = "Automatically check each week for the top 3 based on the rating of the series"
+    help = (
+        "Automatically check each week for the top 3 based on the rating of the series"
+    )
 
     def handle(self, *args, **options):
-        series = Series.objects.all().order_by('-rating')[:3]
+        series = Series.objects.all().order_by("-rating")[:3]
 
         body = """
         <h1> Hello! </h1>
@@ -24,11 +28,18 @@ class Command(BaseCommand):
    \ \/  \/ / _ \ | |  / _` |/ _ \| '_ \ / _ \ | |
     \  /\  /  __/ | | | (_| | (_) | | | |  __/ |_|
      \/  \/ \___|_|_|  \__,_|\___/|_| |_|\___| (_)
-        """.format(series[0].title, series[0].rating, series[1].title, series[1].rating, series[2].title, series[2].rating)
+        """.format(
+            series[0].title,
+            series[0].rating,
+            series[1].title,
+            series[1].rating,
+            series[2].title,
+            series[2].rating,
+        )
 
         send_mail(
-            'Top 3 series',
+            "Top 3 series",
             strip_tags(body),
-            'test@gmail.nl',
-            ['erhan.citil@maykinmedia.nl'],
+            "test@gmail.nl",
+            ["erhan.citil@maykinmedia.nl"],
         )

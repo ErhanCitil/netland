@@ -4,27 +4,38 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Series',
+            name="Series",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(max_length=100)),
-                ('rating', models.DecimalField(blank=True, decimal_places=1, max_digits=2, null=True)),
-                ('summary', models.TextField()),
-                ('has_won_awards', models.IntegerField()),
-                ('seasons', models.IntegerField()),
-                ('country', models.CharField(max_length=2)),
-                ('spoken_in_language', models.CharField(max_length=2)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("title", models.CharField(max_length=100)),
+                (
+                    "rating",
+                    models.DecimalField(
+                        blank=True, decimal_places=1, max_digits=2, null=True
+                    ),
+                ),
+                ("summary", models.TextField()),
+                ("has_won_awards", models.IntegerField()),
+                ("seasons", models.IntegerField()),
+                ("country", models.CharField(max_length=2)),
+                ("spoken_in_language", models.CharField(max_length=2)),
             ],
             options={
-                'db_table': 'series',
+                "db_table": "series",
             },
         ),
     ]

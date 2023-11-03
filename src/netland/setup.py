@@ -40,9 +40,7 @@ def monkeypatch_requests():
     try:
         from requests import Session
     except ModuleNotFoundError:
-        logger.debug(
-            "Attempt to patch requests, but the library is not installed"
-        )
+        logger.debug("Attempt to patch requests, but the library is not installed")
         return
 
     if hasattr(Session, "_original_request"):
